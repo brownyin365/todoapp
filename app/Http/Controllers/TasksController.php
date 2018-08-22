@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Task;
+use App\Task as Tasks;
 
 class TasksController extends Controller
 {
@@ -15,7 +15,7 @@ class TasksController extends Controller
     //Index Method should list and fetch all tasks in a view
     public function index()
     {
-         $tasks = Task::all();
+         $tasks = Tasks::all();
          return view('tasks.index', compact('tasks'));
     }
 
@@ -38,7 +38,7 @@ class TasksController extends Controller
     // Request the title data and store and redirect back to index
     public function store(Request $request)
     {
-        $tasks = Task::create($request->only('title'));
+        $tasks = Tasks::create($request->only('title'));
         return redirect(route('tasks.index'));
     }
 
